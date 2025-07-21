@@ -1,103 +1,189 @@
-import Image from "next/image";
+'use client';
+
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import Navigation from '@/components/Navigation';
+import { 
+  CodeBracketIcon, 
+  MusicalNoteIcon, 
+  ArrowRightIcon,
+  EnvelopeIcon
+} from '@heroicons/react/24/outline';
+import FeaturedProjects from '@/components/FeaturedProjects';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const recentPosts = [
+    {
+      title: "Exploring Quantum Computing with Qiskit",
+      excerpt: "Building quantum algorithms and understanding quantum gates...",
+      date: "2024-01-15",
+      slug: "quantum-computing-qiskit"
+    },
+    {
+      title: "Embedded Systems: From Microcontrollers to IoT",
+      excerpt: "Developing for resource-constrained environments and real-time systems...",
+      date: "2024-01-10",
+      slug: "embedded-systems-iot"
+    },
+    {
+      title: "Low-Level Programming: Memory Management in C",
+      excerpt: "Understanding memory allocation, pointers, and system-level programming...",
+      date: "2024-01-05",
+      slug: "low-level-programming-c"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen">
+      <Navigation />
+      
+      {/* Hero Section */}
+      <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              Hi, I&apos;m <span className="text-purple-400">Zach</span>
+            </h1>
+                        <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+              I&apos;m a programming generalist and music producer passionate about exploring diverse
+              technologies from embedded systems to quantum computing, web development to low-level programming.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link
+                  href="/portfolio"
+                  className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center gap-2"
+                >
+                  <CodeBracketIcon className="h-5 w-5" />
+                  View My Work
+                </Link>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link
+                  href="/music"
+                  className="bg-transparent border-2 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center gap-2"
+                >
+                  <MusicalNoteIcon className="h-5 w-5" />
+                  Listen to Music
+                </Link>
+              </motion.div>
+            </div>
+            
+            {/* Social Links */}
+            <div className="flex justify-center gap-6">
+              <motion.a
+                href="https://github.com/zach1020"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                className="text-gray-400 hover:text-white transition-colors font-semibold"
+              >
+                GitHub
+              </motion.a>
+              <motion.a
+                href="https://www.linkedin.com/in/zachary-bohl-2092581ab/"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                className="text-gray-400 hover:text-white transition-colors font-semibold"
+              >
+                LinkedIn
+              </motion.a>
+              <motion.a
+                href="mailto:bohl.zachary@gmail.com"
+                whileHover={{ scale: 1.1 }}
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <EnvelopeIcon className="h-6 w-6" />
+              </motion.a>
+            </div>
+          </motion.div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Featured Projects Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-bold text-white mb-4">Featured Projects</h2>
+            <p className="text-gray-300 text-lg">Exploring diverse programming domains from embedded to quantum</p>
+          </motion.div>
+
+          <FeaturedProjects />
+        </div>
+      </section>
+
+      {/* Recent Blog Posts Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-bold text-white mb-4">Recent Blog Posts</h2>
+            <p className="text-gray-300 text-lg">Thoughts on programming, music, and everything in between</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {recentPosts.map((post, index) => (
+              <motion.div
+                key={post.slug}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 + index * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-purple-400/50 transition-all duration-300"
+              >
+                <h3 className="text-xl font-semibold text-white mb-2">{post.title}</h3>
+                <p className="text-gray-300 mb-4">{post.excerpt}</p>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-400 text-sm">{post.date}</span>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="text-purple-400 hover:text-purple-300 text-sm font-medium flex items-center gap-1"
+                  >
+                    Read More
+                    <ArrowRightIcon className="h-4 w-4" />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="text-center mt-12"
+          >
+            <Link
+              href="/blog"
+              className="bg-transparent border-2 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200"
+            >
+              View All Posts
+            </Link>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }
