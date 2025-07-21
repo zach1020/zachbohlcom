@@ -104,6 +104,22 @@ export default function Music() {
               Exploring the intersection of technology and creativity through 
               electronic music production and algorithmic composition.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <a
+                  href="https://soundcloud.com/capybara-watanabe"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center gap-2"
+                >
+                  <MusicalNoteIcon className="h-5 w-5" />
+                  Listen on SoundCloud
+                </a>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
