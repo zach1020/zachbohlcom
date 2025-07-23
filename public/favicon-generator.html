@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favicon Generator</title>
+</head>
+<body>
+    <canvas id="favicon" width="32" height="32"></canvas>
+    <canvas id="favicon16" width="16" height="16"></canvas>
+    <canvas id="favicon48" width="48" height="48"></canvas>
+    <canvas id="apple-touch" width="180" height="180"></canvas>
+    
+    <script>
+        function drawFavicon(canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Background circle
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2 - 1, 0, 2 * Math.PI);
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fill();
+            ctx.strokeStyle = '#8b5cf6';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            
+            // Main lepton particle
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/4, 0, 2 * Math.PI);
+            ctx.fillStyle = '#8b5cf6';
+            ctx.globalAlpha = 0.9;
+            ctx.fill();
+            
+            // Inner core
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/8, 0, 2 * Math.PI);
+            ctx.fillStyle = '#a855f7';
+            ctx.globalAlpha = 1;
+            ctx.fill();
+            
+            // Orbital rings
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2.7, 0, 2 * Math.PI);
+            ctx.strokeStyle = '#8b5cf6';
+            ctx.lineWidth = 0.5;
+            ctx.globalAlpha = 0.6;
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/3.2, 0, 2 * Math.PI);
+            ctx.strokeStyle = '#a855f7';
+            ctx.globalAlpha = 0.4;
+            ctx.stroke();
+            
+            // Quantum dots
+            ctx.globalAlpha = 0.8;
+            ctx.fillStyle = '#c084fc';
+            
+            ctx.beginPath();
+            ctx.arc(size/4, size/4, size/32, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.arc(3*size/4, 3*size/4, size/32, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            ctx.globalAlpha = 0.6;
+            ctx.beginPath();
+            ctx.arc(size/4, 3*size/4, size/40, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.arc(3*size/4, size/4, size/40, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+        
+        // Draw favicons at different sizes
+        drawFavicon('favicon', 32);
+        drawFavicon('favicon16', 16);
+        drawFavicon('favicon48', 48);
+        drawFavicon('apple-touch', 180);
+        
+        // Add download buttons
+        document.body.innerHTML += '<br><button onclick="downloadCanvas(\'favicon\', \'favicon.png\')">Download 32x32</button>';
+        document.body.innerHTML += '<button onclick="downloadCanvas(\'favicon16\', \'favicon-16x16.png\')">Download 16x16</button>';
+        document.body.innerHTML += '<button onclick="downloadCanvas(\'favicon48\', \'favicon-48x48.png\')">Download 48x48</button>';
+        document.body.innerHTML += '<button onclick="downloadCanvas(\'apple-touch\', \'apple-touch-icon.png\')">Download 180x180</button>';
+        
+        function downloadCanvas(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html> 

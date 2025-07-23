@@ -283,19 +283,23 @@ export default function Contact() {
             {[
               {
                 question: "What types of projects do you work on?",
-                answer: "I specialize in web development, particularly full-stack applications using React, Next.js, and Node.js. I also work on music production projects and creative coding applications."
+                answer: "I'm a programming generalist who wears many hats. I work across diverse domains including embedded systems, quantum computing, low-level programming, web development, and music production. From microcontrollers to quantum algorithms, I enjoy exploring the full spectrum of programming challenges."
               },
               {
                 question: "Do you take on freelance work?",
-                answer: "Yes! I'm always interested in new opportunities. Whether it's web development, music production, or creative projects, I'd love to hear about your ideas."
+                answer: "Absolutely! I'm always interested in new opportunities across my areas of expertise. Whether it's systems programming, quantum computing, embedded development, web applications, or creative projects, I'd love to hear about your ideas."
               },
               {
-                question: "How do you approach music production projects?",
-                answer: "I combine traditional music production techniques with modern technology, often incorporating algorithmic composition and custom software tools I've developed."
+                question: "What's your background in systems programming?",
+                answer: "I have experience with low-level programming including C/C++, memory management, real-time operating systems, and embedded systems development. I've worked on projects involving microcontrollers, IoT devices, and resource-constrained environments."
+              },
+              {
+                question: "How do you approach quantum computing projects?",
+                answer: "I work with quantum algorithms, error correction, and quantum programming frameworks like Qiskit. I enjoy exploring quantum gates, quantum circuits, and implementing quantum algorithms for various applications."
               },
               {
                 question: "What's your typical project timeline?",
-                answer: "Timelines vary depending on project scope and complexity. Small projects might take 1-2 weeks, while larger applications can take 1-3 months. I always provide detailed estimates upfront."
+                answer: "Timelines vary significantly based on domain and complexity. Embedded systems projects might take 2-4 weeks, quantum algorithms 1-3 months, while comprehensive web applications can take 1-3 months. I always provide detailed estimates upfront."
               }
             ].map((faq, index) => (
               <motion.div

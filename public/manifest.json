@@ -1,0 +1,16 @@
+{
+  "name": "Zach's Blog & Portfolio",
+  "short_name": "Zach's Site",
+  "description": "Programmer and Music Producer - Showcasing projects, blog posts, and music production work",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#8b5cf6",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+} 
