@@ -14,6 +14,55 @@ import {
 // This is where you'll add your blog posts
 const blogPosts = [
   {
+    slug: "revisiting-brothers-karamazov",
+    title: "Revisiting The Brothers Karamazov at 30",
+    content: `# Revisiting The Brothers Karamazov at 30
+
+Ten years ago, at the age of 20, during a college gap year, I cracked open one of the finest works of literature humanity has ever produced. Did I understand it? Will I understand it now?
+
+The Brothers Karamazov by Fyodor Dostoevsky is a beast. Tipping the scales at around 900 pages, it's a seminal work of Russian literature—and it belongs on every bookshelf. Dostoevsky doesn't pull punches. He dives headfirst into some of the darkest corners of the human spirit. He paints a gloomy portrait of a fallen people, divorced from their maker (whoever that may be), and spins a tangled thread of story, polemic, philosophy, and like… a bajillion different Russian names. He wrestles with faith, evil, Orthodoxy, God, family, murder, guilt—you know, light stuff.
+
+I remember one special night clearly: Ivan's final conversation with the devil. I was sitting in a diner, sipping coffee around 1 AM. (Need I say more?) The electricity in that passage was palpable. I don't remember all the details—just the tone, the dread, the brilliance. I sat there, probably on my third refill, that sticky Texas summer, following Dostoevsky to some Orthodox purgatory, thinking about the decent man who had to walk a quadrillion miles to heaven.
+
+Did I get it? What did it mean to me at the time?
+
+I'm not sure. I don't consider myself religious. I have a spiritual side, sure, but I've never really believed in anything beyond what we can touch, see, or measure.
+
+It's not that I'm some Reddit atheist man-baby—far from it—but if we're using Christian terms, I suppose you could say I've always "struggled with faith."
+
+I've dabbled in other traditions too—Hinduism among them. There's a lot I admire in it: the architecture, the mythos, the devotion. But it never quite clicked. Not in the way I hoped.
+
+This blog post isn't me fishing for faith—or even intending to find it. It's a retrospective. A breadcrumb in the forest. A mental note to self:
+
+Ten years ago, I read The Brothers Karamazov. So what?
+
+So what, indeed.
+
+I don't remember much of it, to be honest. But I do remember the feeling. And that matters. It wasn't a book I "got" the first time around—but it did something to me. And now, at 30, I'm wondering what else it might have to say.
+
+Back in my late teens and early twenties, I considered myself a Dostoevsky fan (as many young men do). I'd love to say I was on the bandwagon before Jordan Peterson was a thing—but that's not important. Whatever gets people to pick up great art—even if it's cliché—has value.
+
+But this isn't about Jordan Peterson. Or Carl Jung. Or the chimps.
+
+This is about me, revisiting a book that loomed large in my intellectual and spiritual development. A book I read when I thought I had questions. And now, ten years later, I know I do.
+
+It's been a bumpy ride—these past ten years. (I'm even thinking of writing a memoir.) Life threw some wild stuff at me. Some of it heartbreaking. Some of it hilarious. All of it, I think, worth writing down.
+
+A retrospective at the ripe old age of 30 might seem gauche, but here I am. And if something I write resonates with someone else out there, then great. I've never made music or written to get rich and famous. I just want to make cool shit for my bros.
+
+So, yeah. What are you reading?
+
+Me? I'm reading Dostoevsky.
+
+Again.
+
+I'll let you know how it goes.`,
+    date: "2025-07-23",
+    readTime: "8 min read",
+    category: "Literature",
+    tags: ["Dostoevsky", "Literature", "Philosophy", "Personal Growth"]
+  },
+  {
     slug: "music-visualizer-web-audio-api",
     title: "Building a Music Visualizer with Web Audio API",
     content: `# Building a Music Visualizer with Web Audio API

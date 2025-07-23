@@ -15,6 +15,12 @@ export default function Home() {
 
   const recentPosts = [
     {
+      title: "Revisiting The Brothers Karamazov at 30",
+      excerpt: "Ten years after first reading Dostoevsky's masterpiece at age 20, I'm diving back into the dark corners of the human spirit. What did I understand then? What will I understand now?",
+      date: "2025-07-23",
+      slug: "revisiting-brothers-karamazov"
+    },
+    {
       title: "Exploring Quantum Computing with Qiskit",
       excerpt: "Building quantum algorithms and understanding quantum gates...",
       date: "2024-01-15",
@@ -25,12 +31,6 @@ export default function Home() {
       excerpt: "Developing for resource-constrained environments and real-time systems...",
       date: "2024-01-10",
       slug: "embedded-systems-iot"
-    },
-    {
-      title: "Low-Level Programming: Memory Management in C",
-      excerpt: "Understanding memory allocation, pointers, and system-level programming...",
-      date: "2024-01-05",
-      slug: "low-level-programming-c"
     }
   ];
 

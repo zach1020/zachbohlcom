@@ -17,6 +17,15 @@ export default function Blog() {
 
   const blogPosts = [
     {
+      title: "Revisiting The Brothers Karamazov at 30",
+      excerpt: "Ten years after first reading Dostoevsky's masterpiece at age 20, I'm diving back into the dark corners of the human spirit. What did I understand then? What will I understand now?",
+      slug: "revisiting-brothers-karamazov",
+      date: "2025-07-23",
+      readTime: "8 min read",
+      category: "Literature",
+      tags: ["Dostoevsky", "Literature", "Philosophy", "Personal Growth"]
+    },
+    {
       title: "Exploring Quantum Computing with Qiskit",
       excerpt: "Building quantum algorithms and understanding quantum gates. This post covers the fundamentals of quantum computing and how to implement algorithms using IBM's Qiskit framework.",
       slug: "quantum-computing-qiskit",
@@ -72,7 +81,7 @@ export default function Blog() {
     }
   ];
 
-  const categories = ["All", "Embedded", "Quantum", "Systems", "Web", "Music"];
+  const categories = ["All", "Embedded", "Quantum", "Systems", "Web", "Music", "Literature"];
 
   const filteredPosts = blogPosts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
