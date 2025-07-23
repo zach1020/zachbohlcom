@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import { 
   CodeBracketIcon, 
@@ -10,6 +11,7 @@ import {
   EnvelopeIcon
 } from '@heroicons/react/24/outline';
 import FeaturedProjects from '@/components/FeaturedProjects';
+import HeroImages from '@/components/HeroImages';
 
 export default function Home() {
 
@@ -39,8 +41,9 @@ export default function Home() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 relative">
+        <HeroImages />
+        <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -102,6 +105,15 @@ export default function Home() {
                 LinkedIn
               </motion.a>
               <motion.a
+                href="https://twitter.com/Elroy_Muscato"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                className="text-gray-400 hover:text-white transition-colors font-semibold"
+              >
+                X
+              </motion.a>
+              <motion.a
                 href="mailto:bohl.zachary@gmail.com"
                 whileHover={{ scale: 1.1 }}
                 className="text-gray-400 hover:text-white transition-colors"
@@ -151,8 +163,25 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 + index * 0.1 }}
                 whileHover={{ y: -5 }}
-                className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-purple-400/50 transition-all duration-300"
+                className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-purple-400/50 transition-all duration-300 overflow-hidden"
               >
+                {/* Blog Post Image */}
+                <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+                  <Image
+                    src={
+                      index === 0 
+                        ? "https://images.pexels.com/photos/3747468/pexels-photo-3747468.jpeg" // Books for Dostoevsky
+                        : index === 1
+                        ? "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // Quantum computing
+                        : "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // Embedded systems
+                    }
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                </div>
+                
                 <h3 className="text-xl font-semibold text-white mb-2">{post.title}</h3>
                 <p className="text-gray-300 mb-4">{post.excerpt}</p>
                 <div className="flex justify-between items-center">
@@ -184,6 +213,8 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+
     </div>
   );
 }

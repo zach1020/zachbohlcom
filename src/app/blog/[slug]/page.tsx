@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import { 
   ArrowLeftIcon,
@@ -301,6 +302,22 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       {/* Hero Section */}
       <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
+          {/* Blog Post Hero Image */}
+          <div className="relative h-64 mb-8 rounded-lg overflow-hidden">
+            <Image
+              src={
+                post.slug === "revisiting-brothers-karamazov"
+                  ? "https://images.pexels.com/photos/3747468/pexels-photo-3747468.jpeg" // Books for Dostoevsky
+                  : post.slug === "quantum-computing-qiskit"
+                  ? "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // Quantum computing
+                  : "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // Default tech image
+              }
+              alt={post.title}
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+          </div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
