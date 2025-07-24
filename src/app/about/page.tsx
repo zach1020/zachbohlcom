@@ -25,21 +25,15 @@ export default function About() {
 
   const experience = [
     {
-      title: "Virtual Reality Specialist",
-      company: "Insight Global",
-      period: "2025 - Present",
-      description: "Specializing in VR development and immersive technology solutions for enterprise applications."
-    },
-    {
       title: "WordPress Consultant",
       company: "The Energy Council",
-      period: "2024 - 2025",
+      period: "2024 - Present",
       description: "Provided WordPress development and consulting services for energy industry clients."
     },
     {
       title: "Consultant and Programmer",
       company: "Bat City Archery",
-      period: "2024 - 2025",
+      period: "2024 - Present",
       description: "Developed custom software solutions and provided technical consulting for archery business operations."
     }
   ];
