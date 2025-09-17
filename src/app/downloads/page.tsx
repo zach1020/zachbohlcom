@@ -10,7 +10,8 @@ import {
   ClockIcon,
   TagIcon,
   StarIcon,
-  MusicalNoteIcon
+  MusicalNoteIcon,
+  AcademicCapIcon
 } from '@heroicons/react/24/outline';
 
 export default function Downloads() {
@@ -44,6 +45,21 @@ export default function Downloads() {
       tags: ["Spotify", "Music", "Neumorphic UI", "Electron", "macOS"],
       downloadUrl: "https://github.com/zach1020/Playlist-Organizer/releases/tag/v0.1.0-mac",
       githubUrl: "https://github.com/zach1020/Playlist-Organizer"
+    },
+    {
+      id: 3,
+      name: "Capy's Flash Cards",
+      description: "An AI-powered study tool that generates custom quizzes from your study material. Features native macOS app support, customizable question counts, and detailed results with explanations.",
+      version: "v0.1.0",
+      category: "Desktop Application",
+      icon: AcademicCapIcon,
+      size: "200 MB",
+      downloads: 0, // Will be updated with actual download count
+      lastUpdated: "2025-09-17",
+      platforms: ["macOS (Intel)", "macOS (Apple Silicon)"],
+      tags: ["AI", "Education", "Study Tool", "Quiz Generation", "macOS"],
+      downloadUrl: "https://github.com/zach1020/capys-flash-cards/releases/tag/v0.1.0",
+      githubUrl: "https://github.com/zach1020/capys-flash-cards"
     }
   ];
 
