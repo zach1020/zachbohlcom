@@ -1,13 +1,13 @@
 # Zach's Blog & Portfolio
 
-A modern, responsive blog and portfolio website built with Next.js, showcasing both programming projects and music production work.
+A modern, responsive blog and portfolio website built with Next.js, showcasing AI programming projects and music production work.
 
 ## 🚀 Features
 
 - **Modern Design**: Beautiful dark theme with purple accents and smooth animations
 - **Responsive**: Fully responsive design that works on all devices
 - **Portfolio Showcase**: Display your GitHub projects with detailed information
-- **Blog System**: Share your thoughts on programming, music, and technology
+- **Blog System**: Share your thoughts on AI programming, music, and technology
 - **Music Production**: Showcase your music tracks with play/pause functionality
 - **Contact Form**: Get in touch with potential clients and collaborators
 - **Smooth Animations**: Powered by Framer Motion for engaging user experience

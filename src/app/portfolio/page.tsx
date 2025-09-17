@@ -24,8 +24,8 @@ export default function Portfolio() {
               My <span className="text-purple-400">Portfolio</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              A collection of projects showcasing my diverse programming skills across 
-              embedded systems, quantum computing, low-level programming, and web development.
+              A collection of projects showcasing my diverse programming skills across
+              embedded systems, AI programming, low-level programming, and web development.
             </p>
           </motion.div>
         </div>

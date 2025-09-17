@@ -7,8 +7,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Zach's Blog & Portfolio",
-  description: "Programmer and Music Producer - Showcasing projects, blog posts, and music production work",
-  keywords: ["programming", "music production", "portfolio", "blog", "developer"],
+  description: "AI Programmer and Music Producer - Showcasing projects, blog posts, and music production work",
+  keywords: ["AI programming", "machine learning", "music production", "portfolio", "blog", "developer"],
   authors: [{ name: "Zach" }],
   icons: {
     icon: '/favicon.svg',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Zach's Blog & Portfolio",
-    description: "Programmer and Music Producer - Showcasing projects, blog posts, and music production work",
+    description: "AI Programmer and Music Producer - Showcasing projects, blog posts, and music production work",
     type: "website",
   },
 };

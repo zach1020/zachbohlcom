@@ -308,8 +308,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               src={
                 post.slug === "revisiting-brothers-karamazov"
                   ? "https://images.pexels.com/photos/3747468/pexels-photo-3747468.jpeg" // Books for Dostoevsky
-                  : post.slug === "quantum-computing-qiskit"
-                  ? "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // Quantum computing
+                  : post.slug === "ai-models-pytorch"
+                  ? "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // AI development
                   : "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // Default tech image
               }
               alt={post.title}

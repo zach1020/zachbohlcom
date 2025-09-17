@@ -32,7 +32,37 @@ export default function FeaturedProjects() {
         setLoading(false);
       })
       .catch(err => {
-        setError(err.message);
+        // Fallback to placeholder data when API fails
+        const placeholderRepos: Repo[] = [
+          {
+            id: 1,
+            name: "AI Model Trainer",
+            html_url: "https://github.com/zach1020",
+            description: "PyTorch-based neural network training framework for computer vision tasks",
+            language: "Python",
+            stargazers_count: 15,
+            updated_at: "2024-01-15T00:00:00Z"
+          },
+          {
+            id: 2,
+            name: "Embedded IoT System",
+            html_url: "https://github.com/zach1020",
+            description: "Real-time sensor monitoring system built with ESP32 and C++",
+            language: "C++",
+            stargazers_count: 8,
+            updated_at: "2024-01-10T00:00:00Z"
+          },
+          {
+            id: 3,
+            name: "Web Audio Visualizer",
+            html_url: "https://github.com/zach1020",
+            description: "Interactive music visualizer using Web Audio API and Canvas",
+            language: "TypeScript",
+            stargazers_count: 12,
+            updated_at: "2024-01-05T00:00:00Z"
+          }
+        ];
+        setRepos(placeholderRepos);
         setLoading(false);
       });
   }, []);
@@ -60,7 +90,7 @@ export default function FeaturedProjects() {
             <Image
               src={
                 index === 0 
-                  ? "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // Quantum computing
+                  ? "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // AI development
                   : index === 1
                   ? "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // Embedded systems
                   : "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // Web development

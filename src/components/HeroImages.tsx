@@ -8,7 +8,7 @@ export default function HeroImages() {
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Background Images */}
       <div className="relative w-full h-full">
-        {/* Semiconductor/Quantum Computing Image */}
+        {/* AI/Technology Image */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.1 }}
@@ -17,7 +17,7 @@ export default function HeroImages() {
         >
           <Image
             src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg"
-            alt="Quantum computing and semiconductors"
+            alt="AI and technology"
             fill
             className="object-cover rounded-lg"
             priority

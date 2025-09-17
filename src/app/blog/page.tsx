@@ -26,13 +26,13 @@ export default function Blog() {
       tags: ["Dostoevsky", "Literature", "Philosophy", "Personal Growth"]
     },
     {
-      title: "Exploring Quantum Computing with Qiskit",
-      excerpt: "Building quantum algorithms and understanding quantum gates. This post covers the fundamentals of quantum computing and how to implement algorithms using IBM's Qiskit framework.",
-      slug: "quantum-computing-qiskit",
+      title: "Building AI Models with PyTorch",
+      excerpt: "Developing neural networks and understanding deep learning architectures. This post covers the fundamentals of AI development and how to implement models using PyTorch.",
+      slug: "ai-models-pytorch",
       date: "2024-01-15",
       readTime: "12 min read",
-      category: "Quantum",
-      tags: ["Quantum Computing", "Qiskit", "Python", "Algorithms"]
+      category: "AI",
+      tags: ["AI", "PyTorch", "Python", "Deep Learning"]
     },
     {
       title: "Embedded Systems: From Microcontrollers to IoT",
@@ -62,13 +62,13 @@ export default function Blog() {
       tags: ["RTOS", "Embedded Systems", "C", "Task Scheduling", "Real-time"]
     },
     {
-      title: "Quantum Error Correction: Surface Codes",
-      excerpt: "Implementing quantum error correction codes including surface codes and stabilizer codes for fault-tolerant quantum computing.",
-      slug: "quantum-error-correction",
+      title: "Computer Vision with CNNs",
+      excerpt: "Implementing convolutional neural networks for image classification and object detection. Exploring modern architectures and training techniques.",
+      slug: "computer-vision-cnns",
       date: "2023-12-20",
       readTime: "16 min read",
-      category: "Quantum",
-      tags: ["Quantum Error Correction", "Surface Codes", "Qiskit", "Fault Tolerance"]
+      category: "AI",
+      tags: ["Computer Vision", "CNNs", "PyTorch", "Deep Learning"]
     },
     {
       title: "Creating Music with Code",
@@ -81,7 +81,7 @@ export default function Blog() {
     }
   ];
 
-  const categories = ["All", "Embedded", "Quantum", "Systems", "Web", "Music", "Literature"];
+  const categories = ["All", "Embedded", "AI", "Systems", "Web", "Music", "Literature"];
 
   const filteredPosts = blogPosts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -108,7 +108,7 @@ export default function Blog() {
               My <span className="text-purple-400">Blog</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              Thoughts on diverse programming domains, from embedded systems to quantum computing, 
+              Thoughts on diverse programming domains, from embedded systems to AI programming,
               low-level programming to web development. Sharing insights across the programming spectrum.
             </p>
           </motion.div>

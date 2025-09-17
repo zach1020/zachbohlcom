@@ -23,10 +23,10 @@ export default function Home() {
       slug: "revisiting-brothers-karamazov"
     },
     {
-      title: "Exploring Quantum Computing with Qiskit",
-      excerpt: "Building quantum algorithms and understanding quantum gates...",
+      title: "Building AI Models with PyTorch",
+      excerpt: "Developing neural networks and understanding deep learning architectures...",
       date: "2024-01-15",
-      slug: "quantum-computing-qiskit"
+      slug: "ai-models-pytorch"
     },
     {
       title: "Embedded Systems: From Microcontrollers to IoT",
@@ -55,7 +55,7 @@ export default function Home() {
             </h1>
                         <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
               I&apos;m a programming generalist and music producer passionate about exploring diverse
-              technologies from embedded systems to quantum computing, web development to low-level programming.
+              technologies from embedded systems to AI programming, web development to low-level programming.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
               <motion.div
@@ -135,7 +135,7 @@ export default function Home() {
             className="text-center mb-12"
           >
             <h2 className="text-4xl font-bold text-white mb-4">Featured Projects</h2>
-            <p className="text-gray-300 text-lg">Exploring diverse programming domains from embedded to quantum</p>
+            <p className="text-gray-300 text-lg">Exploring diverse programming domains from embedded to AI</p>
           </motion.div>
 
           <FeaturedProjects />
@@ -172,7 +172,7 @@ export default function Home() {
                       index === 0 
                         ? "https://images.pexels.com/photos/3747468/pexels-photo-3747468.jpeg" // Books for Dostoevsky
                         : index === 1
-                        ? "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // Quantum computing
+                        ? "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // AI development
                         : "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // Embedded systems
                     }
                     alt={post.title}

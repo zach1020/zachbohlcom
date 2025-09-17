@@ -16,7 +16,7 @@ export default function About() {
     { name: "C/C++ Programming", level: 90 },
     { name: "Embedded Systems", level: 85 },
     { name: "Python", level: 80 },
-    { name: "Quantum Computing", level: 75 },
+    { name: "AI/Machine Learning", level: 85 },
     { name: "Assembly Language", level: 70 },
     { name: "Systems Programming", level: 85 },
     { name: "Web Development", level: 80 },
@@ -70,8 +70,8 @@ export default function About() {
               About <span className="text-purple-400">Me</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              A programming generalist and music producer exploring diverse technologies 
-              from embedded systems to quantum computing, low-level programming to web development.
+              A programming generalist and music producer exploring diverse technologies
+              from embedded systems to AI programming, low-level programming to web development.
             </p>
           </motion.div>
         </div>
@@ -89,15 +89,15 @@ export default function About() {
             <h2 className="text-3xl font-bold text-white mb-6">My Story</h2>
             <div className="space-y-6 text-gray-300">
                              <p>
-                 I&apos;m a programming generalist and music producer who believes in the power of diverse 
-                 technologies to solve complex problems. My journey began with a fascination for how 
-                 computers work at every level, from the quantum realm to embedded systems.
+                 I&apos;m a programming generalist and music producer who believes in the power of diverse
+                 technologies to solve complex problems. My journey began with a fascination for how
+                 computers work at every level, from machine learning algorithms to embedded systems.
                </p>
                <p>
-                 As a programming generalist, I work across multiple domains including embedded systems, 
-                 quantum computing, low-level programming, and web development. I&apos;m passionate about 
-                 understanding systems from the ground up, whether that&apos;s writing assembly code for 
-                 microcontrollers or implementing quantum algorithms.
+                 As a programming generalist, I work across multiple domains including embedded systems,
+                 AI/machine learning, low-level programming, and web development. I&apos;m passionate about
+                 understanding systems from the ground up, whether that&apos;s writing assembly code for
+                 microcontrollers or implementing neural networks.
                </p>
                <p>
                  In embedded systems, I focus on real-time programming, resource-constrained environments, 
@@ -105,9 +105,9 @@ export default function About() {
                  interfaces, and optimizing code for performance and reliability.
                </p>
                <p>
-                 My goal is to bridge the gap between different programming paradigms, whether that&apos;s 
-                 implementing quantum error correction codes, designing memory allocators, or building 
-                 distributed sensor networks. I believe that understanding diverse technologies makes me 
+                 My goal is to bridge the gap between different programming paradigms, whether that&apos;s
+                 implementing machine learning models, designing memory allocators, or building
+                 distributed sensor networks. I believe that understanding diverse technologies makes me
                  a more versatile and effective programmer.
                </p>
             </div>
@@ -167,7 +167,7 @@ export default function About() {
             >
                              <div className="flex items-center gap-3 mb-6">
                  <MusicalNoteIcon className="h-8 w-8 text-purple-400" />
-                 <h3 className="text-2xl font-semibold text-white">Quantum & Web</h3>
+                 <h3 className="text-2xl font-semibold text-white">AI & Web</h3>
                </div>
               <div className="space-y-4">
                 {skills.slice(4).map((skill) => (
@@ -298,9 +298,9 @@ export default function About() {
               className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 text-center"
             >
                              <HeartIcon className="h-12 w-12 text-purple-400 mx-auto mb-4" />
-               <h3 className="text-xl font-semibold text-white mb-2">Quantum Computing</h3>
+               <h3 className="text-xl font-semibold text-white mb-2">AI Programming</h3>
                <p className="text-gray-300 text-sm">
-                 Exploring quantum algorithms and the future of computing at the quantum level.
+                 Building intelligent systems with machine learning, neural networks, and AI frameworks.
                </p>
             </motion.div>
 
