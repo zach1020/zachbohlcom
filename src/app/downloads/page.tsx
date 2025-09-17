@@ -23,7 +23,7 @@ export default function Downloads() {
       icon: SparklesIcon,
       size: "45.2 MB",
       downloads: 0, // Will be updated with actual download count
-      lastUpdated: "2024-09-17",
+      lastUpdated: "2025-09-17",
       platforms: ["macOS (Intel)", "macOS (Apple Silicon)"],
       tags: ["AI", "Journaling", "Markdown", "macOS", "Desktop"],
       downloadUrl: "https://github.com/zach1020/ai-journal/releases/tag/v1.0.0",
