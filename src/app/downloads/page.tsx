@@ -9,7 +9,8 @@ import {
   SparklesIcon,
   ClockIcon,
   TagIcon,
-  StarIcon
+  StarIcon,
+  MusicalNoteIcon
 } from '@heroicons/react/24/outline';
 
 export default function Downloads() {
@@ -28,6 +29,21 @@ export default function Downloads() {
       tags: ["AI", "Journaling", "Markdown", "macOS", "Desktop"],
       downloadUrl: "https://github.com/zach1020/ai-journal/releases/tag/v1.0.0",
       githubUrl: "https://github.com/zach1020/ai-journal"
+    },
+    {
+      id: 2,
+      name: "Capy's Amazing Playlist Organizer",
+      description: "A native macOS app with neumorphic UI for Spotify playlist analysis and organization. Features real-time audio analysis, BPM and key detection, and offline capabilities.",
+      version: "v0.1.0-mac",
+      category: "Desktop Application",
+      icon: MusicalNoteIcon,
+      size: "85.4 MB",
+      downloads: 0, // Will be updated with actual download count
+      lastUpdated: "2025-09-17",
+      platforms: ["macOS (Intel)", "macOS (Apple Silicon)"],
+      tags: ["Spotify", "Music", "Neumorphic UI", "Electron", "macOS"],
+      downloadUrl: "https://github.com/zach1020/Playlist-Organizer/releases/tag/v0.1.0-mac",
+      githubUrl: "https://github.com/zach1020/Playlist-Organizer"
     }
   ];
 
