@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  CodeBracketIcon, 
   CalendarIcon
 } from '@heroicons/react/24/outline';
 import RotatingShape from './RotatingShape';

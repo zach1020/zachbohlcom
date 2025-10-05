@@ -4,7 +4,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import RotatingShape from '@/components/RotatingShape';
 import ReactMarkdown from 'react-markdown';

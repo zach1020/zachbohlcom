@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useRef, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useRef, useState, useEffect, useMemo, ReactNode } from 'react';
 
 interface MusicContextType {
   isPlaying: boolean;
@@ -22,28 +22,29 @@ export function MusicProvider({ children }: { children: ReactNode }) {
   const [currentTrack, setCurrentTrack] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
   
-  const playlist = [
+  const playlist = useMemo(() => [
     "Rocking the Boat.mp3",
     "Baplicity Pitched Up Paired Back.mp3",
     "Comeback or Nah_.mp3",
     "Hoping to Be Found.mp3",
     "Twilight Chops.mp3"
-  ];
+  ], []);
 
   useEffect(() => {
-    if (audioRef.current) {
+    const audioElement = audioRef.current;
+    if (audioElement) {
       // Set the current track
-      audioRef.current.src = `/${playlist[currentTrack]}`;
+      audioElement.src = `/${playlist[currentTrack]}`;
       
       const handleTimeUpdate = () => {
-        if (audioRef.current) {
-          setCurrentTime(audioRef.current.currentTime);
+        if (audioElement) {
+          setCurrentTime(audioElement.currentTime);
         }
       };
       
       const handleLoadedMetadata = () => {
-        if (audioRef.current) {
-          setDuration(audioRef.current.duration);
+        if (audioElement) {
+          setDuration(audioElement.duration);
         }
       };
       
@@ -61,32 +62,32 @@ export function MusicProvider({ children }: { children: ReactNode }) {
       
       const handleCanPlay = async () => {
         // Auto-play if music was playing when track changed
-        if (isPlaying && audioRef.current) {
+        if (isPlaying && audioElement) {
           try {
-            await audioRef.current.play();
+            await audioElement.play();
           } catch (error) {
             console.error('Auto-play failed:', error);
           }
         }
       };
       
-      audioRef.current.addEventListener('timeupdate', handleTimeUpdate);
-      audioRef.current.addEventListener('loadedmetadata', handleLoadedMetadata);
-      audioRef.current.addEventListener('ended', handleEnded);
-      audioRef.current.addEventListener('error', handleError);
-      audioRef.current.addEventListener('canplay', handleCanPlay);
+      audioElement.addEventListener('timeupdate', handleTimeUpdate);
+      audioElement.addEventListener('loadedmetadata', handleLoadedMetadata);
+      audioElement.addEventListener('ended', handleEnded);
+      audioElement.addEventListener('error', handleError);
+      audioElement.addEventListener('canplay', handleCanPlay);
       
       return () => {
-        if (audioRef.current) {
-          audioRef.current.removeEventListener('timeupdate', handleTimeUpdate);
-          audioRef.current.removeEventListener('loadedmetadata', handleLoadedMetadata);
-          audioRef.current.removeEventListener('ended', handleEnded);
-          audioRef.current.removeEventListener('error', handleError);
-          audioRef.current.removeEventListener('canplay', handleCanPlay);
+        if (audioElement) {
+          audioElement.removeEventListener('timeupdate', handleTimeUpdate);
+          audioElement.removeEventListener('loadedmetadata', handleLoadedMetadata);
+          audioElement.removeEventListener('ended', handleEnded);
+          audioElement.removeEventListener('error', handleError);
+          audioElement.removeEventListener('canplay', handleCanPlay);
         }
       };
     }
-  }, [currentTrack, isPlaying]);
+  }, [currentTrack, isPlaying, playlist]);
 
   const nextTrack = async () => {
     const nextIndex = (currentTrack + 1) % playlist.length;
