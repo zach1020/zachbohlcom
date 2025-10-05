@@ -11,7 +11,7 @@ import {
   EnvelopeIcon
 } from '@heroicons/react/24/outline';
 import FeaturedProjects from '@/components/FeaturedProjects';
-import HeroImages from '@/components/HeroImages';
+import AtomModel from '@/components/AtomModel';
 
 export default function Home() {
 
@@ -37,12 +37,12 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
       <Navigation />
+      <AtomModel />
       
       {/* Hero Section */}
       <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 relative">
-        <HeroImages />
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -126,8 +126,8 @@ export default function Home() {
       </section>
 
       {/* Featured Projects Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -143,8 +143,8 @@ export default function Home() {
       </section>
 
       {/* Recent Blog Posts Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
