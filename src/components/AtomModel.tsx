@@ -1,35 +1,11 @@
 'use client';
 
-import { useRef, Suspense } from 'react';
+import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
-// Component to load and animate the atom model
-function AtomMesh() {
-  const { scene } = useGLTF('/atom.glb');
-  const meshRef = useRef<THREE.Group>(null);
-
-  // Rotate the atom model continuously
-  useFrame((state, delta) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y += delta * 0.2; // Slower rotation around Y axis
-      meshRef.current.rotation.x += delta * 0.1; // Slower rotation around X axis
-    }
-  });
-
-  // Clone the scene to avoid issues with multiple instances
-  const clonedScene = scene.clone();
-
-  return (
-    <group ref={meshRef}>
-      <primitive object={clonedScene} scale={[3, 3, 3]} />
-    </group>
-  );
-}
-
-// Loading fallback component - make it more visible
-function LoadingFallback() {
+// Rotating sphere component
+function RotatingSphere() {
   const meshRef = useRef<THREE.Mesh>(null);
   
   useFrame((state, delta) => {
@@ -59,9 +35,7 @@ export default function AtomModel() {
         <pointLight position={[-10, -10, -5]} intensity={1.2} color="#8b5cf6" />
         <pointLight position={[10, -10, 5]} intensity={0.8} color="#a855f7" />
         
-        <Suspense fallback={<LoadingFallback />}>
-          <AtomMesh />
-        </Suspense>
+        <RotatingSphere />
       </Canvas>
     </div>
   );
