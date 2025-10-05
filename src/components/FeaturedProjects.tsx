@@ -19,7 +19,6 @@ interface Repo {
 export default function FeaturedProjects() {
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetch('/api/github/pinned')
@@ -31,7 +30,7 @@ export default function FeaturedProjects() {
         setRepos(data);
         setLoading(false);
       })
-      .catch(err => {
+      .catch(() => {
         // Fallback to placeholder data when API fails
         const placeholderRepos: Repo[] = [
           {
@@ -69,9 +68,6 @@ export default function FeaturedProjects() {
 
   if (loading) {
     return <div className="text-center text-gray-400 py-8">Loading featured projects...</div>;
-  }
-  if (error) {
-    return <div className="text-center text-red-400 py-8">Error: {error}</div>;
   }
 
   return (

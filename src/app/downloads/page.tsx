@@ -5,11 +5,9 @@ import Navigation from '@/components/Navigation';
 import { 
   ArrowDownTrayIcon,
   CodeBracketIcon,
-  CpuChipIcon,
   SparklesIcon,
   ClockIcon,
   TagIcon,
-  StarIcon,
   MusicalNoteIcon,
   AcademicCapIcon
 } from '@heroicons/react/24/outline';
@@ -63,7 +61,6 @@ export default function Downloads() {
     }
   ];
 
-  const categories = ["All", "Desktop Application", "AI/Machine Learning", "Embedded Systems", "Creative Coding"];
 
   return (
     <div className="min-h-screen">

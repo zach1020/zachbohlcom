@@ -7,30 +7,25 @@ import * as THREE from 'three';
 
 // Component to load and animate the atom model
 function AtomMesh() {
-  try {
-    const { scene } = useGLTF('/atom.glb');
-    const meshRef = useRef<THREE.Group>(null);
+  const { scene } = useGLTF('/atom.glb');
+  const meshRef = useRef<THREE.Group>(null);
 
-    // Rotate the atom model continuously
-    useFrame((state, delta) => {
-      if (meshRef.current) {
-        meshRef.current.rotation.y += delta * 0.2; // Slower rotation around Y axis
-        meshRef.current.rotation.x += delta * 0.1; // Slower rotation around X axis
-      }
-    });
+  // Rotate the atom model continuously
+  useFrame((state, delta) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.y += delta * 0.2; // Slower rotation around Y axis
+      meshRef.current.rotation.x += delta * 0.1; // Slower rotation around X axis
+    }
+  });
 
-    // Clone the scene to avoid issues with multiple instances
-    const clonedScene = scene.clone();
+  // Clone the scene to avoid issues with multiple instances
+  const clonedScene = scene.clone();
 
-    return (
-      <group ref={meshRef}>
-        <primitive object={clonedScene} scale={[3, 3, 3]} />
-      </group>
-    );
-  } catch (error) {
-    console.error('Error loading GLB model:', error);
-    return <LoadingFallback />;
-  }
+  return (
+    <group ref={meshRef}>
+      <primitive object={clonedScene} scale={[3, 3, 3]} />
+    </group>
+  );
 }
 
 // Loading fallback component - make it more visible
