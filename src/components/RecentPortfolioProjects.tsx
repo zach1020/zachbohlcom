@@ -6,6 +6,7 @@ import {
   CodeBracketIcon, 
   CalendarIcon
 } from '@heroicons/react/24/outline';
+import RotatingShape from './RotatingShape';
 
 interface Repo {
   id: string;
@@ -22,6 +23,7 @@ interface Repo {
 export default function RecentPortfolioProjects() {
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   useEffect(() => {
     fetch('/api/github/recent-portfolio')
@@ -75,9 +77,6 @@ export default function RecentPortfolioProjects() {
   if (loading) {
     return <div className="text-center text-gray-400 py-8">Loading recent projects...</div>;
   }
-  if (error) {
-    return <div className="text-center text-red-400 py-8">Error: {error}</div>;
-  }
 
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -88,10 +87,19 @@ export default function RecentPortfolioProjects() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 + index * 0.1 }}
           whileHover={{ y: -5 }}
+          onHoverStart={() => setHoveredProject(index)}
+          onHoverEnd={() => setHoveredProject(null)}
           className="bg-white/5 backdrop-blur-sm rounded-lg overflow-hidden border border-white/10 hover:border-purple-400/50 transition-all duration-300"
         >
           <div className="aspect-video bg-gradient-to-br from-purple-600/20 to-blue-600/20 flex items-center justify-center">
-            <CodeBracketIcon className="h-12 w-12 text-purple-400" />
+            <RotatingShape 
+              shape={
+                index === 0 ? 'star' : 
+                index === 1 ? 'sphere' : 
+                'cube'
+              }
+              shouldRotate={hoveredProject === index}
+            />
           </div>
           <div className="p-6">
             <div className="flex items-center gap-2 mb-2">

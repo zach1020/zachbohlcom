@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { StarIcon, CodeBracketIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
+import RotatingShape from './RotatingShape';
 
 interface Repo {
   id: number;
@@ -19,6 +20,7 @@ interface Repo {
 export default function FeaturedProjects() {
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   useEffect(() => {
     fetch('/api/github/pinned')
@@ -79,6 +81,8 @@ export default function FeaturedProjects() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 + index * 0.1 }}
           whileHover={{ y: -5 }}
+          onHoverStart={() => setHoveredProject(index)}
+          onHoverEnd={() => setHoveredProject(null)}
         >
           <a
             href={repo.html_url}
@@ -86,21 +90,16 @@ export default function FeaturedProjects() {
             rel="noopener noreferrer"
             className="block bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-purple-400/50 transition-all duration-300 overflow-hidden cursor-pointer"
           >
-            {/* Project Image */}
+            {/* 3D Rotating Shape */}
             <div className="relative h-32 mb-4 rounded-lg overflow-hidden">
-              <Image
-                src={
-                  index === 0 
-                    ? "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // AI development
-                    : index === 1
-                    ? "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // Embedded systems
-                    : "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // Web development
-                }
-                alt={repo.name}
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            <RotatingShape 
+              shape={
+                index === 0 ? 'pyramid' : 
+                index === 1 ? 'torus' : 
+                'cube'
+              }
+              shouldRotate={hoveredProject === index}
+            />
             </div>
             
             <div className="flex items-center gap-2 mb-2">

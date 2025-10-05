@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navigation from '@/components/Navigation';
+import RotatingShape from '@/components/RotatingShape';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
@@ -161,23 +162,9 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
       {/* Hero Section */}
       <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          {/* Blog Post Hero Image */}
+          {/* 3D Rotating Shape Hero */}
           <div className="relative h-64 mb-8 rounded-lg overflow-hidden">
-            <Image
-              src={
-                post.slug === "quantum-math-synth-knobs"
-                  ? "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // AI/Quantum computing
-                  : post.slug === "revisiting-brothers-karamazov"
-                  ? "https://images.pexels.com/photos/3747468/pexels-photo-3747468.jpeg" // Books for Dostoevsky
-                  : post.slug === "ai-models-pytorch"
-                  ? "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // AI development
-                  : "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // Default tech image
-              }
-              alt={post.title}
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <RotatingShape shape={post.slug === "quantum-math-synth-knobs" ? 'star' : 'cube'} />
           </div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

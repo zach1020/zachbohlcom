@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import HydrationSuppressor from "@/components/HydrationSuppressor";
+import { MusicProvider } from "@/contexts/MusicContext";
+import GlobalMusicPlayer from "@/components/GlobalMusicPlayer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,9 +38,21 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <HydrationSuppressor />
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-          {children}
-        </div>
+            <MusicProvider>
+              <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex flex-col">
+                <div className="flex-1">
+                  {children}
+                </div>
+                <footer className="bg-black/20 backdrop-blur-sm border-t border-purple-500/20 py-6 px-4">
+                  <div className="max-w-7xl mx-auto text-center">
+                    <p className="text-purple-300 text-lg font-medium">
+                      Zach Bohl 2025
+                    </p>
+                  </div>
+                </footer>
+              </div>
+              <GlobalMusicPlayer />
+            </MusicProvider>
       </body>
     </html>
   );

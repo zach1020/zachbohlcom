@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import React, { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import { 
   CodeBracketIcon, 
@@ -13,8 +14,50 @@ import {
 } from '@heroicons/react/24/outline';
 import FeaturedProjects from '@/components/FeaturedProjects';
 import AtomModel from '@/components/AtomModel';
+import RotatingShape from '@/components/RotatingShape';
+import DiscoParty from '@/components/DiscoParty';
 
 export default function Home() {
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [isRainingNotes, setIsRainingNotes] = useState(false);
+  const [isRainingCode, setIsRainingCode] = useState(false);
+  const [isRainingBlog, setIsRainingBlog] = useState(false);
+  const [windowSize, setWindowSize] = useState({ width: 1200, height: 800 });
+
+  React.useEffect(() => {
+    const updateWindowSize = () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+    
+    updateWindowSize();
+    window.addEventListener('resize', updateWindowSize);
+    return () => window.removeEventListener('resize', updateWindowSize);
+  }, []);
+
+
+  const startNoteRain = () => {
+    setIsRainingNotes(true);
+  };
+
+  const stopNoteRain = () => {
+    setIsRainingNotes(false);
+  };
+
+  const startCodeRain = () => {
+    setIsRainingCode(true);
+  };
+
+  const stopCodeRain = () => {
+    setIsRainingCode(false);
+  };
+
+  const startBlogRain = () => {
+    setIsRainingBlog(true);
+  };
+
+  const stopBlogRain = () => {
+    setIsRainingBlog(false);
+  };
 
   const recentPosts = [
     {
@@ -35,6 +78,95 @@ export default function Home() {
     <div className="min-h-screen relative">
       <Navigation />
       <AtomModel />
+      <DiscoParty />
+      
+      
+      {/* Musical Note Rain Effect */}
+      {isRainingNotes && (
+        <div className="fixed inset-0 pointer-events-none z-50">
+          {Array.from({ length: 50 }, (_, i) => (
+            <motion.div
+              key={i}
+              className="absolute text-4xl opacity-80"
+              initial={{
+                x: Math.random() * windowSize.width,
+                y: -100,
+                rotate: Math.random() * 360,
+                scale: 0.5 + Math.random() * 1.5,
+              }}
+              animate={{
+                y: windowSize.height + 100,
+                rotate: Math.random() * 720,
+              }}
+              transition={{
+                duration: 2 + Math.random() * 2,
+                ease: "linear",
+                delay: Math.random() * 2,
+              }}
+            >
+              {['🎵', '🎶', '🎼', '🎹', '🎸', '🎺', '🎻', '🥁'][Math.floor(Math.random() * 8)]}
+            </motion.div>
+          ))}
+        </div>
+      )}
+
+      {/* Code Rain Effect */}
+      {isRainingCode && (
+        <div className="fixed inset-0 pointer-events-none z-50">
+          {Array.from({ length: 50 }, (_, i) => (
+            <motion.div
+              key={i}
+              className="absolute text-4xl opacity-80"
+              initial={{
+                x: Math.random() * windowSize.width,
+                y: -100,
+                rotate: Math.random() * 360,
+                scale: 0.5 + Math.random() * 1.5,
+              }}
+              animate={{
+                y: windowSize.height + 100,
+                rotate: Math.random() * 720,
+              }}
+              transition={{
+                duration: 2 + Math.random() * 2,
+                ease: "linear",
+                delay: Math.random() * 2,
+              }}
+            >
+              {['💻', '⚡', '🔧', '🚀', '⚙️', '🎯', '💡', '🔥'][Math.floor(Math.random() * 8)]}
+            </motion.div>
+          ))}
+        </div>
+      )}
+
+      {/* Blog Rain Effect */}
+      {isRainingBlog && (
+        <div className="fixed inset-0 pointer-events-none z-50">
+          {Array.from({ length: 50 }, (_, i) => (
+            <motion.div
+              key={i}
+              className="absolute text-4xl opacity-80"
+              initial={{
+                x: Math.random() * windowSize.width,
+                y: -100,
+                rotate: Math.random() * 360,
+                scale: 0.5 + Math.random() * 1.5,
+              }}
+              animate={{
+                y: windowSize.height + 100,
+                rotate: Math.random() * 720,
+              }}
+              transition={{
+                duration: 2 + Math.random() * 2,
+                ease: "linear",
+                delay: Math.random() * 2,
+              }}
+            >
+              {['📝', '📚', '✍️', '📖', '📰', '📄', '✏️', '📋'][Math.floor(Math.random() * 8)]}
+            </motion.div>
+          ))}
+        </div>
+      )}
       
       {/* Hero Section */}
       <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8 relative">
@@ -46,8 +178,9 @@ export default function Home() {
             className="text-center"
           >
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              Hi, I&apos;m <span className="text-purple-400">Zach</span>
+              Hi, I&apos;m <span className="text-purple-400 hover:text-purple-300 hover:drop-shadow-[0_0_20px_rgba(139,92,246,0.8)] hover:scale-110 transition-all duration-300 cursor-default inline-block">Zach</span>
             </h1>
+            
                         <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
               I&apos;m a programming generalist and music producer passionate about exploring diverse
               technologies from embedded systems to AI programming, web development to low-level programming.
@@ -59,6 +192,8 @@ export default function Home() {
               >
                 <Link
                   href="/portfolio"
+                  onMouseEnter={startCodeRain}
+                  onMouseLeave={stopCodeRain}
                   className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center gap-2"
                 >
                   <CodeBracketIcon className="h-5 w-5" />
@@ -71,24 +206,28 @@ export default function Home() {
               >
                 <Link
                   href="/blog"
+                  onMouseEnter={startBlogRain}
+                  onMouseLeave={stopBlogRain}
                   className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center gap-2"
                 >
                   <DocumentTextIcon className="h-5 w-5" />
                   Read My Blog
                 </Link>
               </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  href="/music"
-                  className="bg-transparent border-2 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center gap-2"
-                >
-                  <MusicalNoteIcon className="h-5 w-5" />
-                  Listen to Music
-                </Link>
-              </motion.div>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Link
+                      href="/music"
+                      onMouseEnter={startNoteRain}
+                      onMouseLeave={stopNoteRain}
+                      className="bg-transparent border-2 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center gap-2"
+                    >
+                      <MusicalNoteIcon className="h-5 w-5" />
+                      Listen to Music
+                    </Link>
+                  </motion.div>
             </div>
             
             {/* Social Links */}
@@ -170,26 +309,23 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 + index * 0.1 }}
                 whileHover={{ y: -5 }}
+                onHoverStart={() => setHoveredCard(index)}
+                onHoverEnd={() => setHoveredCard(null)}
               >
                 <Link
                   href={`/blog/${post.slug}`}
                   className="block bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-purple-400/50 transition-all duration-300 overflow-hidden cursor-pointer"
                 >
-                  {/* Blog Post Image */}
+                  {/* 3D Rotating Shape */}
                   <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
-                    <Image
-                      src={
-                        index === 0 
-                          ? "https://images.pexels.com/photos/3747468/pexels-photo-3747468.jpeg" // Books for Dostoevsky
-                          : index === 1
-                          ? "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // AI development
-                          : "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // Embedded systems
+                    <RotatingShape 
+                      shape={
+                        index === 0 ? 'star' : 
+                        index === 1 ? 'cube' : 
+                        'sphere'
                       }
-                      alt={post.title}
-                      fill
-                      className="object-cover"
+                      shouldRotate={hoveredCard === index}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   </div>
                   
                   <h3 className="text-xl font-semibold text-white mb-2">{post.title}</h3>
