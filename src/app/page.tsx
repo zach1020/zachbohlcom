@@ -17,6 +17,12 @@ export default function Home() {
 
   const recentPosts = [
     {
+      title: "From Quantum Math to Synth Knobs: A Playful Wander Through LLMs, Qubits, and Sound Fingerprints",
+      excerpt: "This week I took a wandering road trip across technology: starting with large language model optimizations, detouring through quantum algorithms, and somehow arriving at reverse-engineering Serum presets.",
+      date: "2025-01-20",
+      slug: "quantum-math-synth-knobs"
+    },
+    {
       title: "Revisiting The Brothers Karamazov at 30",
       excerpt: "Ten years after first reading Dostoevsky's masterpiece at age 20, I'm diving back into the dark corners of the human spirit. What did I understand then? What will I understand now?",
       date: "2025-07-23",

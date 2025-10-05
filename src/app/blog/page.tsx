@@ -17,6 +17,15 @@ export default function Blog() {
 
   const blogPosts = [
     {
+      title: "From Quantum Math to Synth Knobs: A Playful Wander Through LLMs, Qubits, and Sound Fingerprints",
+      excerpt: "This week I took a wandering road trip across technology: starting with large language model optimizations, detouring through quantum algorithms, and somehow arriving at reverse-engineering Serum presets.",
+      slug: "quantum-math-synth-knobs",
+      date: "2025-01-20",
+      readTime: "12 min read",
+      category: "AI",
+      tags: ["LLMs", "Quantum Computing", "Music Production", "Machine Learning", "Synthesizers"]
+    },
+    {
       title: "Revisiting The Brothers Karamazov at 30",
       excerpt: "Ten years after first reading Dostoevsky's masterpiece at age 20, I'm diving back into the dark corners of the human spirit. What did I understand then? What will I understand now?",
       slug: "revisiting-brothers-karamazov",
