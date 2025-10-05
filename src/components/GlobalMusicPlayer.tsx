@@ -11,41 +11,41 @@ export default function GlobalMusicPlayer() {
   const [isDragging, setIsDragging] = useState(false);
 
   const getTrackName = (filename: string) => {
-    let name = filename.replace('.mp3', '').replace(/_/g, ' ');
+    const baseName = filename.replace('.mp3', '').replace(/_/g, ' ');
     
     // Special handling for specific track names with emojis
-    if (name.includes('Rocking the Boat')) {
-      name = 'Rocking the Boat 🚢';
-    } else if (name.includes('Baplicity Pitched Up Paired Back')) {
-      name = 'Baplicity 🥁';
-    } else if (name.includes('Comeback or Nah')) {
-      name = 'Comeback or Nah 🎹';
-    } else if (name.includes('Hoping to Be Found')) {
-      name = 'Hoping to Be Found 🔍';
-    } else if (name.includes('Vaguely Discontented')) {
-      name = 'Vaguely Discontented 😐';
-    } else if (name.includes('Twilight Chops')) {
-      name = 'Twilight Chops 💜';
+    if (baseName.includes('Rocking the Boat')) {
+      return 'Rocking the Boat 🚢';
+    } else if (baseName.includes('Baplicity Pitched Up Paired Back')) {
+      return 'Baplicity 🥁';
+    } else if (baseName.includes('Comeback or Nah')) {
+      return 'Comeback or Nah 🎹';
+    } else if (baseName.includes('Hoping to Be Found')) {
+      return 'Hoping to Be Found 🔍';
+    } else if (baseName.includes('Vaguely Discontented')) {
+      return 'Vaguely Discontented 😐';
+    } else if (baseName.includes('Twilight Chops')) {
+      return 'Twilight Chops 💜';
     }
     
-    return name;
+    return baseName;
   };
 
   const getTrackEmoji = (filename: string) => {
-    let name = filename.replace('.mp3', '').replace(/_/g, ' ');
+    const baseName = filename.replace('.mp3', '').replace(/_/g, ' ');
     
     // Return just the emoji for mobile
-    if (name.includes('Rocking the Boat')) {
+    if (baseName.includes('Rocking the Boat')) {
       return '🚢';
-    } else if (name.includes('Baplicity Pitched Up Paired Back')) {
+    } else if (baseName.includes('Baplicity Pitched Up Paired Back')) {
       return '🥁';
-    } else if (name.includes('Comeback or Nah')) {
+    } else if (baseName.includes('Comeback or Nah')) {
       return '🎹';
-    } else if (name.includes('Hoping to Be Found')) {
+    } else if (baseName.includes('Hoping to Be Found')) {
       return '🔍';
-    } else if (name.includes('Vaguely Discontented')) {
+    } else if (baseName.includes('Vaguely Discontented')) {
       return '😐';
-    } else if (name.includes('Twilight Chops')) {
+    } else if (baseName.includes('Twilight Chops')) {
       return '💜';
     }
     
