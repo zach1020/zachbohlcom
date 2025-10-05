@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
@@ -24,8 +24,23 @@ function RotatingSphere() {
 }
 
 export default function AtomModel() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Small delay to ensure page is fully loaded
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!isLoaded) {
+    return null;
+  }
+
   return (
-    <div className="absolute inset-0 pointer-events-none opacity-95">
+    <div className="absolute inset-0 pointer-events-none opacity-95 z-10">
       <Canvas
         camera={{ position: [0, 0, 12], fov: 60 }}
         style={{ width: '100%', height: '100%' }}

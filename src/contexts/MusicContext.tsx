@@ -27,6 +27,7 @@ export function MusicProvider({ children }: { children: ReactNode }) {
     "Baplicity Pitched Up Paired Back.mp3",
     "Comeback or Nah_.mp3",
     "Hoping to Be Found.mp3",
+    "Vaguely Discontented.mp3",
     "Twilight Chops.mp3"
   ], []);
 
