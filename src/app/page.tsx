@@ -8,7 +8,8 @@ import {
   CodeBracketIcon, 
   MusicalNoteIcon, 
   ArrowRightIcon,
-  EnvelopeIcon
+  EnvelopeIcon,
+  DocumentTextIcon
 } from '@heroicons/react/24/outline';
 import FeaturedProjects from '@/components/FeaturedProjects';
 import AtomModel from '@/components/AtomModel';
@@ -62,6 +63,18 @@ export default function Home() {
                 >
                   <CodeBracketIcon className="h-5 w-5" />
                   View My Work
+                </Link>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link
+                  href="/blog"
+                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center gap-2"
+                >
+                  <DocumentTextIcon className="h-5 w-5" />
+                  Read My Blog
                 </Link>
               </motion.div>
               <motion.div
