@@ -27,18 +27,6 @@ export default function Home() {
       excerpt: "Ten years after first reading Dostoevsky's masterpiece at age 20, I'm diving back into the dark corners of the human spirit. What did I understand then? What will I understand now?",
       date: "2025-07-23",
       slug: "revisiting-brothers-karamazov"
-    },
-    {
-      title: "Building AI Models with PyTorch",
-      excerpt: "Developing neural networks and understanding deep learning architectures...",
-      date: "2024-01-15",
-      slug: "ai-models-pytorch"
-    },
-    {
-      title: "Embedded Systems: From Microcontrollers to IoT",
-      excerpt: "Developing for resource-constrained environments and real-time systems...",
-      date: "2024-01-10",
-      slug: "embedded-systems-iot"
     }
   ];
 

@@ -33,64 +33,10 @@ export default function Blog() {
       readTime: "8 min read",
       category: "Literature",
       tags: ["Dostoevsky", "Literature", "Philosophy", "Personal Growth"]
-    },
-    {
-      title: "Building AI Models with PyTorch",
-      excerpt: "Developing neural networks and understanding deep learning architectures. This post covers the fundamentals of AI development and how to implement models using PyTorch.",
-      slug: "ai-models-pytorch",
-      date: "2024-01-15",
-      readTime: "12 min read",
-      category: "AI",
-      tags: ["AI", "PyTorch", "Python", "Deep Learning"]
-    },
-    {
-      title: "Embedded Systems: From Microcontrollers to IoT",
-      excerpt: "Developing for resource-constrained environments and real-time systems. Exploring the challenges and solutions in embedded programming.",
-      slug: "embedded-systems-iot",
-      date: "2024-01-10",
-      readTime: "15 min read",
-      category: "Embedded",
-      tags: ["Embedded Systems", "C++", "ESP32", "IoT", "Real-time"]
-    },
-    {
-      title: "Low-Level Programming: Memory Management in C",
-      excerpt: "Understanding memory allocation, pointers, and system-level programming. Deep dive into how memory works at the lowest level.",
-      slug: "low-level-programming-c",
-      date: "2024-01-05",
-      readTime: "18 min read",
-      category: "Systems",
-      tags: ["C Programming", "Memory Management", "Assembly", "Systems Programming"]
-    },
-    {
-      title: "Building a Real-Time Operating System",
-      excerpt: "Implementing a lightweight RTOS with task scheduling, inter-process communication, and memory management for embedded systems.",
-      slug: "building-rtos",
-      date: "2023-12-28",
-      readTime: "20 min read",
-      category: "Embedded",
-      tags: ["RTOS", "Embedded Systems", "C", "Task Scheduling", "Real-time"]
-    },
-    {
-      title: "Computer Vision with CNNs",
-      excerpt: "Implementing convolutional neural networks for image classification and object detection. Exploring modern architectures and training techniques.",
-      slug: "computer-vision-cnns",
-      date: "2023-12-20",
-      readTime: "16 min read",
-      category: "AI",
-      tags: ["Computer Vision", "CNNs", "PyTorch", "Deep Learning"]
-    },
-    {
-      title: "Creating Music with Code",
-      excerpt: "Using programming to generate and manipulate music. Exploring algorithmic composition, MIDI programming, and how code can be a creative tool for music production.",
-      slug: "creating-music-with-code",
-      date: "2023-12-15",
-      readTime: "10 min read",
-      category: "Music",
-      tags: ["Algorithmic Music", "MIDI", "Python", "Creative Coding"]
     }
   ];
 
-  const categories = ["All", "Embedded", "AI", "Systems", "Web", "Music", "Literature"];
+  const categories = ["All", "AI", "Literature"];
 
   const filteredPosts = blogPosts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
