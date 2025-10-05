@@ -131,53 +131,54 @@ export default function Blog() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.3 + index * 0.1 }}
                   whileHover={{ y: -5 }}
-                  className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-purple-400/50 transition-all duration-300"
                 >
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="px-3 py-1 bg-purple-600/20 text-purple-300 text-xs rounded-full">
-                      {post.category}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">{post.title}</h3>
-                  <p className="text-gray-300 mb-4 text-sm">{post.excerpt}</p>
-                  
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {post.tags.slice(0, 3).map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 bg-gray-600/20 text-gray-300 text-xs rounded-full flex items-center gap-1"
-                      >
-                        <TagIcon className="h-3 w-3" />
-                        {tag}
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="block bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-purple-400/50 transition-all duration-300 cursor-pointer"
+                  >
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="px-3 py-1 bg-purple-600/20 text-purple-300 text-xs rounded-full">
+                        {post.category}
                       </span>
-                    ))}
-                    {post.tags.length > 3 && (
-                      <span className="px-2 py-1 bg-gray-600/20 text-gray-300 text-xs rounded-full">
-                        +{post.tags.length - 3} more
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Meta */}
-                  <div className="flex items-center justify-between text-gray-400 text-xs">
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-1">
-                        <CalendarIcon className="h-3 w-3" />
-                        {post.date}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <ClockIcon className="h-3 w-3" />
-                        {post.readTime}
-                      </div>
                     </div>
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="text-purple-400 hover:text-purple-300 font-medium"
-                    >
-                      Read More →
-                    </Link>
-                  </div>
+                    <h3 className="text-xl font-semibold text-white mb-3">{post.title}</h3>
+                    <p className="text-gray-300 mb-4 text-sm">{post.excerpt}</p>
+                    
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {post.tags.slice(0, 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-1 bg-gray-600/20 text-gray-300 text-xs rounded-full flex items-center gap-1"
+                        >
+                          <TagIcon className="h-3 w-3" />
+                          {tag}
+                        </span>
+                      ))}
+                      {post.tags.length > 3 && (
+                        <span className="px-2 py-1 bg-gray-600/20 text-gray-300 text-xs rounded-full">
+                          +{post.tags.length - 3} more
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Meta */}
+                    <div className="flex items-center justify-between text-gray-400 text-xs">
+                      <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-1">
+                          <CalendarIcon className="h-3 w-3" />
+                          {post.date}
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <ClockIcon className="h-3 w-3" />
+                          {post.readTime}
+                        </div>
+                      </div>
+                      <span className="text-purple-400 font-medium">
+                        Read More →
+                      </span>
+                    </div>
+                  </Link>
                 </motion.div>
               ))}
             </div>

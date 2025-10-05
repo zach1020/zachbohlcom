@@ -170,37 +170,38 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 + index * 0.1 }}
                 whileHover={{ y: -5 }}
-                className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-purple-400/50 transition-all duration-300 overflow-hidden"
               >
-                {/* Blog Post Image */}
-                <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
-                  <Image
-                    src={
-                      index === 0 
-                        ? "https://images.pexels.com/photos/3747468/pexels-photo-3747468.jpeg" // Books for Dostoevsky
-                        : index === 1
-                        ? "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // AI development
-                        : "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // Embedded systems
-                    }
-                    alt={post.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                </div>
-                
-                <h3 className="text-xl font-semibold text-white mb-2">{post.title}</h3>
-                <p className="text-gray-300 mb-4">{post.excerpt}</p>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-400 text-sm">{post.date}</span>
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="text-purple-400 hover:text-purple-300 text-sm font-medium flex items-center gap-1"
-                  >
-                    Read More
-                    <ArrowRightIcon className="h-4 w-4" />
-                  </Link>
-                </div>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="block bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-purple-400/50 transition-all duration-300 overflow-hidden cursor-pointer"
+                >
+                  {/* Blog Post Image */}
+                  <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+                    <Image
+                      src={
+                        index === 0 
+                          ? "https://images.pexels.com/photos/3747468/pexels-photo-3747468.jpeg" // Books for Dostoevsky
+                          : index === 1
+                          ? "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // AI development
+                          : "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" // Embedded systems
+                      }
+                      alt={post.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  </div>
+                  
+                  <h3 className="text-xl font-semibold text-white mb-2">{post.title}</h3>
+                  <p className="text-gray-300 mb-4">{post.excerpt}</p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-400 text-sm">{post.date}</span>
+                    <span className="text-purple-400 text-sm font-medium flex items-center gap-1">
+                      Read More
+                      <ArrowRightIcon className="h-4 w-4" />
+                    </span>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
