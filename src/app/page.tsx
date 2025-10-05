@@ -17,7 +17,7 @@ export default function Home() {
 
   const recentPosts = [
     {
-      title: "From Quantum Math to Synth Knobs: A Playful Wander Through LLMs, Qubits, and Sound Fingerprints",
+      title: "From Quantum Math to Synth Knobs: A Strange Journey Through Brains, Qubits, and Sound",
       excerpt: "This week I took a wandering road trip across technology: starting with large language model optimizations, detouring through quantum algorithms, and somehow arriving at reverse-engineering Serum presets.",
       date: "2025-01-20",
       slug: "quantum-math-synth-knobs"
