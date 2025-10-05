@@ -1,10 +1,17 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navigation from '@/components/Navigation';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeHighlight from 'rehype-highlight';
+import rehypeKatex from 'rehype-katex';
+import 'highlight.js/styles/github-dark.css';
 import { 
   ArrowLeftIcon,
   CalendarIcon,
@@ -55,10 +62,7 @@ But: **Phase estimation is expensive, data loading is hard, and outputting vecto
 Kernels are ML's secret sauce: instead of computing features explicitly, you just need their **inner products**.
 
 - Classically: SVMs with RBF or polynomial kernels.
-- Quantumly: Encode data as quantum states, and compute overlap kernels like
-  \\[
-  k(x, y) = |\\langle \\phi(x)|\\phi(y)\\rangle|^2
-  \\]
+- Quantumly: Encode data as quantum states, and compute overlap kernels like k(x, y) = |⟨φ(x)|φ(y)⟩|²
 - This makes **tiny but tough classification problems** solvable where classical kernels struggle (periodicity, entangled correlations, small sample sizes).
 
 Even attention in transformers is basically a kernel machine. Which means: yes, you can imagine a "quantum attention head."
@@ -170,9 +174,19 @@ I'll let you know how it goes.`,
   }
 ];
 
-export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const [slug, setSlug] = React.useState<string>('');
+  
+  React.useEffect(() => {
+    params.then(resolvedParams => {
+      setSlug(resolvedParams.slug);
+    });
+  }, [params]);
   const post = blogPosts.find(p => p.slug === slug);
+
+  if (!slug) {
+    return <div>Loading...</div>;
+  }
 
   if (!post) {
     notFound();
@@ -259,38 +273,90 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               transition={{ duration: 0.8, delay: 0.2 }}
               className="prose prose-invert prose-purple max-w-none"
             >
-              <div 
-                className="text-gray-300 leading-relaxed"
-                dangerouslySetInnerHTML={{ 
-                  __html: post.content
-                    .split('\n')
-                    .map(line => {
-                      if (line.startsWith('# ')) {
-                        return `<h1 class="text-3xl font-bold text-white mb-6">${line.slice(2)}</h1>`;
-                      }
-                      if (line.startsWith('## ')) {
-                        return `<h2 class="text-2xl font-bold text-white mb-4 mt-8">${line.slice(3)}</h2>`;
-                      }
-                      if (line.startsWith('### ')) {
-                        return `<h3 class="text-xl font-bold text-white mb-3 mt-6">${line.slice(4)}</h3>`;
-                      }
-                      if (line.startsWith('```')) {
-                        return `<pre class="bg-gray-800 p-4 rounded-lg overflow-x-auto my-4"><code class="text-green-400">`;
-                      }
-                      if (line.startsWith('- ')) {
-                        return `<li class="ml-4">${line.slice(2)}</li>`;
-                      }
-                      if (line.trim() === '') {
-                        return '<br>';
-                      }
-                      if (line.startsWith('1. ')) {
-                        return `<li class="ml-4">${line.slice(3)}</li>`;
-                      }
-                      return `<p class="mb-4">${line}</p>`;
-                    })
-                    .join('')
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm, remarkMath]}
+                rehypePlugins={[
+                  rehypeHighlight,
+                  [rehypeKatex, { throwOnError: false, strict: false }]
+                ]}
+                components={{
+                  h1: ({ children }) => (
+                    <h1 className="text-3xl font-bold text-white mb-6 mt-8 first:mt-0">
+                      {children}
+                    </h1>
+                  ),
+                  h2: ({ children }) => (
+                    <h2 className="text-2xl font-bold text-white mb-4 mt-8">
+                      {children}
+                    </h2>
+                  ),
+                  h3: ({ children }) => (
+                    <h3 className="text-xl font-bold text-white mb-3 mt-6">
+                      {children}
+                    </h3>
+                  ),
+                  p: ({ children }) => (
+                    <p className="text-gray-300 mb-4 leading-relaxed">
+                      {children}
+                    </p>
+                  ),
+                  ul: ({ children }) => (
+                    <ul className="list-disc list-inside text-gray-300 mb-4 space-y-2">
+                      {children}
+                    </ul>
+                  ),
+                  ol: ({ children }) => (
+                    <ol className="list-decimal list-inside text-gray-300 mb-4 space-y-2">
+                      {children}
+                    </ol>
+                  ),
+                  li: ({ children }) => (
+                    <li className="text-gray-300">
+                      {children}
+                    </li>
+                  ),
+                  code: ({ children, className }) => {
+                    const isInline = !className;
+                    if (isInline) {
+                      return (
+                        <code className="bg-gray-800 text-green-400 px-1 py-0.5 rounded text-sm">
+                          {children}
+                        </code>
+                      );
+                    }
+                    return (
+                      <code className={className}>
+                        {children}
+                      </code>
+                    );
+                  },
+                  pre: ({ children }) => (
+                    <pre className="bg-gray-800 border border-gray-700 rounded-lg p-4 overflow-x-auto my-4">
+                      {children}
+                    </pre>
+                  ),
+                  blockquote: ({ children }) => (
+                    <blockquote className="border-l-4 border-purple-400 pl-4 italic text-gray-300 my-4">
+                      {children}
+                    </blockquote>
+                  ),
+                  hr: () => (
+                    <hr className="border-gray-600 my-8" />
+                  ),
+                  strong: ({ children }) => (
+                    <strong className="font-bold text-white">
+                      {children}
+                    </strong>
+                  ),
+                  em: ({ children }) => (
+                    <em className="italic text-gray-300">
+                      {children}
+                    </em>
+                  )
                 }}
-              />
+              >
+                {post.content}
+              </ReactMarkdown>
             </motion.div>
           </motion.div>
         </div>
