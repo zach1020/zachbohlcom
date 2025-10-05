@@ -59,10 +59,7 @@ export default function AtomModel() {
         <pointLight position={[-10, -10, -5]} intensity={1.2} color="#8b5cf6" />
         <pointLight position={[10, -10, 5]} intensity={0.8} color="#a855f7" />
         
-        {/* Show the loading fallback first to test if 3D is working */}
-        <LoadingFallback />
-        
-        <Suspense fallback={null}>
+        <Suspense fallback={<LoadingFallback />}>
           <AtomMesh />
         </Suspense>
       </Canvas>

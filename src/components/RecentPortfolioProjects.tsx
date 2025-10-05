@@ -22,7 +22,6 @@ interface Repo {
 export default function RecentPortfolioProjects() {
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetch('/api/github/recent-portfolio')
@@ -34,7 +33,7 @@ export default function RecentPortfolioProjects() {
         setRepos(data);
         setLoading(false);
       })
-      .catch(err => {
+      .catch(() => {
         // Fallback to placeholder data when API fails
         const placeholderRepos: Repo[] = [
           {

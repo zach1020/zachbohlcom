@@ -24,7 +24,6 @@ interface Repo {
 export default function FeaturedPortfolioProjects() {
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetch('/api/github/pinned-portfolio')
@@ -36,7 +35,7 @@ export default function FeaturedPortfolioProjects() {
         setRepos(data);
         setLoading(false);
       })
-      .catch(err => {
+      .catch(() => {
         // Fallback to placeholder data when API fails
         const placeholderRepos: Repo[] = [
           {
