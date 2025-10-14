@@ -313,7 +313,7 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
           {/* 3D Rotating Shape Hero */}
           <div className="relative h-64 mb-8 rounded-lg overflow-hidden">
                 <RotatingShape shape={
-                  post.slug === "hello-quantum-world" ? 'atom' :
+                  post.slug === "hello-quantum-world" ? 'sphere' :
                   post.slug === "quantum-math-synth-knobs" ? 'star' : 
                   'cube'
                 } />
