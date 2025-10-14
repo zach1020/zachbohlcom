@@ -17,6 +17,15 @@ export default function Blog() {
 
   const blogPosts = [
     {
+      title: "Hello, Quantum World --- My First Steps with IBM Quantum & Qiskit",
+      excerpt: "I recently followed IBM Quantum's 'Hello world' tutorial and got my hands dirty with qubits, entanglement, and the real challenges of running circuits on quantum hardware. Here's what I learned about Bell states, GHZ states, and the humbling reality of quantum noise.",
+      slug: "hello-quantum-world",
+      date: "2025-10-14",
+      readTime: "10 min read",
+      category: "Quantum Computing",
+      tags: ["Quantum Computing", "Qiskit", "IBM Quantum", "Programming", "Physics"]
+    },
+    {
       title: "From Quantum Math to Synth Knobs: A Strange Journey Through Brains, Qubits, and Sound",
       excerpt: "This week I took a wandering road trip across technology: starting with large language model optimizations, detouring through quantum algorithms, and somehow arriving at reverse-engineering Serum presets.",
       slug: "quantum-math-synth-knobs",
@@ -36,7 +45,7 @@ export default function Blog() {
     }
   ];
 
-  const categories = ["All", "AI", "Literature"];
+  const categories = ["All", "Quantum Computing", "AI", "Literature"];
 
   const filteredPosts = blogPosts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||

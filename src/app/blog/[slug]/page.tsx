@@ -22,6 +22,155 @@ import {
 // This is where you'll add your blog posts
 const blogPosts = [
   {
+    slug: "hello-quantum-world",
+    title: "Hello, Quantum World --- My First Steps with IBM Quantum & Qiskit",
+    content: `# Hello, Quantum World --- My First Steps with IBM Quantum & Qiskit
+
+## Introduction
+
+I recently followed IBM Quantum's **"Hello world" tutorial** and got my
+hands dirty with qubits, entanglement, and the real challenges of
+running circuits on quantum hardware. In this post I'll walk through
+what I learned, show code snippets, and reflect on what surprised me
+(and what I'm excited to try next).
+
+------------------------------------------------------------------------
+
+## Setting the Stage
+
+To get started, I set up a Python environment (Jupyter) with **Qiskit**,
+**qiskit‑ibm-runtime**, and \`matplotlib\`. I also configured my IBM
+Quantum credentials so that I could submit jobs to real quantum
+processors via IBM Cloud.
+
+This setup might seem boilerplate, but it's crucial: quantum frameworks
+depend heavily on proper versions, backend connectivity, and
+visualization tools.
+
+------------------------------------------------------------------------
+
+## The Four Phases of a Quantum Program
+
+One of the most useful mental models I picked up from the tutorial is
+that any quantum program (in this Qiskit + IBM runtime setting) can be
+thought of in four phases:
+
+1.  **Map** --- translate your problem into circuits and operators  
+2.  **Optimize** --- adapt circuits to hardware constraints, reduce
+    depth, map layouts  
+3.  **Execute** --- send the job to a simulator or QPU using primitives
+    like \`Estimator\` or \`Sampler\`  
+4.  **Analyze** --- interpret results, plot, use error mitigation
+
+This "pipeline" abstraction is helpful: any nontrivial quantum algorithm
+you write later will go through these phases.
+
+------------------------------------------------------------------------
+
+## A Toy Example: Bell State + Observables
+
+To test things out, I constructed this simple circuit:
+
+\`\`\` python
+from qiskit import QuantumCircuit
+qc = QuantumCircuit(2)
+qc.h(0)
+qc.cx(0, 1)
+qc.draw("mpl")
+\`\`\`
+
+This prepares a **Bell entangled state** between qubits 0 and 1.
+
+Next, I defined a few observables (Pauli operators) using
+\`SparsePauliOp\`:  
+\`IZ, IX, ZI, XI, ZZ, XX\`.
+
+These capture single‑qubit measurements (e.g. Z on second qubit) and
+correlations (e.g. Z⊗Z or X⊗X). The expectation values of these
+observables will tell me whether the qubits behave independently or are
+correlated (entangled).
+
+Before execution, the tutorial walks through the optimization stage:
+mapping the circuit and operators into the basis gates, considering the
+backend's architecture, and minimizing circuit depth.
+
+For execution, I used:
+
+\`\`\` python
+from qiskit_ibm_runtime import EstimatorV2 as Estimator
+estimator = Estimator(mode=backend)
+estimator.options.resilience_level = 1
+estimator.options.default_shots = 5000
+job = estimator.run([(isa_circuit, mapped_observables)])
+\`\`\`
+
+Once the job completes, I retrieved expectation values and plotted them.
+In the Bell state case, the single-qubit expectation values (like ⟨Z⟩ or
+⟨X⟩ individually) came out ~0, while the correlation terms (⟨ZZ⟩, ⟨XX⟩)
+were ~1 --- a hallmark of entanglement.
+
+------------------------------------------------------------------------
+
+## Scaling Up: GHZ States and the Noise Problem
+
+After verifying things on 2 qubits, the tutorial scales to 100 qubits by
+preparing a **GHZ state**: a sort of "all qubits entangled in one large
+superposition."
+
+\`\`\` python
+def get_qc_for_n_qubit_GHZ_state(n):
+    qc = QuantumCircuit(n)
+    qc.h(0)
+    for i in range(n - 1):
+        qc.cx(i, i+1)
+    return qc
+\`\`\`
+
+Then they define operators like ( Z_0 Z_i ) to probe how correlation
+decays over distance in the presence of hardware noise. The normalized
+expectation values (⟨Z₀Zᵢ⟩ / ⟨Z₀Z₁⟩) are plotted against qubit
+separation distance. As expected, the farther apart two qubits are, the
+weaker the measured correlation --- illustrating decoherence and error
+accumulation in real devices.
+
+They also turn on error-resilience options (e.g., dynamical decoupling)
+in the \`Estimator\` to help mitigate some of that noise, though it
+doesn't perfect the results.
+
+------------------------------------------------------------------------
+
+## What Surprised Me & Lessons Learned
+
+-   The sheer difference between *ideal* outcomes (in theory or
+    simulation) and real hardware outputs is humbling. Even in a simple
+    2-qubit example, noise and errors impact results.  
+-   The optimization / mapping stage is not cosmetic --- it's essential.
+    You can propose a circuit, but if it doesn't respect the physical
+    qubit connectivity or the device's basic gates, it'll be remapped
+    (and possibly degraded) behind the scenes.  
+-   Scaling is brutal. Even though building a 100-qubit circuit is
+    "easy" in code, actually getting reliable results is hard. The decay
+    of correlations is a real-world symptom of quantum fragility.
+
+------------------------------------------------------------------------
+
+## What's Next For Me (And You)
+
+-   Dive deeper into **error mitigation** techniques (zero-noise
+    extrapolation, readout error correction).  
+-   Try other tutorials, e.g. **VQE (Variational Quantum Eigensolver)**,
+    **Quantum Phase Estimation**, or **QAOA**.  
+-   Experiment with **hybrid quantum-classical workflows**, where part
+    of the algorithm runs in Python / classical compute and part runs on
+    the QPU.  
+-   Explore more complex circuits, custom observables, or even quantum
+    algorithms for chemistry, optimization, or simulation.`,
+    date: "2025-10-14",
+    readTime: "10 min read",
+    category: "Quantum Computing",
+    tags: ["Quantum Computing", "Qiskit", "IBM Quantum", "Programming", "Physics"]
+  },
+  {
     slug: "quantum-math-synth-knobs",
     title: "From Quantum Math to Synth Knobs: A Strange Journey Through Brains, Qubits, and Sound",
     content: `# From Quantum Math to Synth Knobs: A Strange Journey Through Brains, Qubits, and Sound
@@ -163,7 +312,11 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
         <div className="max-w-4xl mx-auto">
           {/* 3D Rotating Shape Hero */}
           <div className="relative h-64 mb-8 rounded-lg overflow-hidden">
-                <RotatingShape shape={post.slug === "quantum-math-synth-knobs" ? 'star' : 'cube'} />
+                <RotatingShape shape={
+                  post.slug === "hello-quantum-world" ? 'atom' :
+                  post.slug === "quantum-math-synth-knobs" ? 'star' : 
+                  'cube'
+                } />
           </div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
