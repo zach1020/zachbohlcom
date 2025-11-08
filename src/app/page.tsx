@@ -12,6 +12,7 @@ import {
   DocumentTextIcon
 } from '@heroicons/react/24/outline';
 import FeaturedProjects from '@/components/FeaturedProjects';
+import GitHubContributions from '@/components/GitHubContributions';
 import AtomModel from '@/components/AtomModel';
 import RotatingShape from '@/components/RotatingShape';
 import DiscoParty from '@/components/DiscoParty';
@@ -284,6 +285,24 @@ export default function Home() {
           </motion.div>
 
           <FeaturedProjects />
+        </div>
+      </section>
+
+      {/* GitHub Contributions */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-bold text-white mb-4">Real GitHub Activity</h2>
+            <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+              A live snapshot of my recent GitHub contributions pulled straight from my profile.
+            </p>
+          </motion.div>
+          <GitHubContributions />
         </div>
       </section>
 
