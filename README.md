@@ -58,7 +58,6 @@ Update the social links in the homepage and contact page:
 // Replace these with your actual URLs
 "https://github.com/yourusername"
 "https://www.linkedin.com/in/zachary-bohl-2092581ab/"
-"https://twitter.com/Elroy_Muscato"
 "mailto:your.email@example.com"
 ```
 

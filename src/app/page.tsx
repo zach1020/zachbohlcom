@@ -251,15 +251,6 @@ export default function Home() {
                 LinkedIn
               </motion.a>
               <motion.a
-                href="https://twitter.com/Elroy_Muscato"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                className="text-gray-400 hover:text-white transition-colors font-semibold"
-              >
-                X
-              </motion.a>
-              <motion.a
                 href="mailto:bohl.zachary@gmail.com"
                 whileHover={{ scale: 1.1 }}
                 className="text-gray-400 hover:text-white transition-colors"

@@ -251,14 +251,6 @@ export default function Contact() {
                   >
                     LinkedIn
                   </a>
-                  <a
-                    href="https://twitter.com/Elroy_Muscato"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-white transition-colors font-medium"
-                  >
-                    Twitter
-                  </a>
                 </div>
               </motion.div>
             </motion.div>
